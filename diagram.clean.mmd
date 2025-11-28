@@ -1,0 +1,19 @@
+flowchart TD
+    subgraph Library_System[Library System]
+        direction TB
+        subgraph Manage_Dept[Management]
+            direction TB
+            Procurement[Procurement] --> Financial[Finance]
+            Financial --> Cataloging[Catalog]
+        end
+
+        subgraph Circulation_Dept[Circulation]
+            direction TB
+            Shelving[Shelving] --> Inventory[Inventory]
+            BorrowingReq[Borrow] --> CheckOut[Check Out]
+            CheckOut --> DueDate[Due Date]
+        end
+    end
+
+    Procurement --> Shelving
+    CheckOut --> Inventory
