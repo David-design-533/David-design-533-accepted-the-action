@@ -1,0 +1,57 @@
+flowchart TD
+    %% 
+    subgraph Library_System [ (LMS)]
+        direction TB
+        
+        subgraph Manage_Dept []
+            direction TB
+            Procurement[] --> Financial[]
+            Financial --> Cataloging[]
+            Cataloging --> AssetMgmt[/]
+            AssetMgmt --> Quality[]
+        end
+
+        subgraph Circulation_Dept []
+            direction TB
+            Shelving[] --> Inventory[]
+            Inventory --> LocationMgmt[/]
+            
+            BorrowingReq[] --> CheckOut[]
+            CheckOut --> DueDate[]
+            
+            ReturnReq[] --> CheckIn[]
+            CheckIn --> ConditionCheck[]
+            ConditionCheck --> Reshelving[/]
+        end
+
+        subgraph Reader_Service []
+            direction TB
+            Search[/OPAC] --> Reservation[/]
+            Reservation --> BorrowingReq
+            
+            BorrowingHistory[]
+            FineMgmt[]
+        end
+    end
+
+    %% 
+    Procurement -->|| Shelving
+    Cataloging -->|| Search
+    
+    LocationMgmt -.->|| Search
+    
+    CheckOut -->|:| Inventory
+    CheckOut -->|| BorrowingHistory
+    
+    CheckIn -->|:| Inventory
+    CheckIn -->|| FineMgmt
+    
+    Reshelving --> Shelving
+
+    %%  ()
+    classDef blueFill fill:#e6f3ff,stroke:#333,stroke-width:1px;
+    classDef darkBlue fill:#b3d9ff,stroke:#333,stroke-width:1px;
+    
+    class Procurement,Financial,Cataloging,AssetMgmt,Quality blueFill
+    class Shelving,Inventory,LocationMgmt,CheckOut,CheckIn,Reshelving darkBlue
+    class Search,Reservation,BorrowingReq,ReturnReq,FineMgmt,BorrowingHistory blueFill
