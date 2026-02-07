@@ -1,0 +1,14 @@
+# Lung Visualization Model - Python Dependencies
+# 肺部可视化模型 - Python 依赖
+
+# No external Python dependencies required for core functionality
+# The project uses only Python standard library
+
+# Optional: For development and testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+
+# Optional: For advanced features (if needed in future)
+# numpy>=1.24.0
+# matplotlib>=3.7.0
+# plotly>=5.14.0
