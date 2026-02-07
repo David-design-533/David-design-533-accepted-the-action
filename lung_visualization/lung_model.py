@@ -61,6 +61,18 @@ class LungModel:
         if years <= 0:
             return self.get_baseline_data()
         
+        # Reset to baseline before calculating new stage
+        self.healthy_lung_volume = 6000
+        self.healthy_fev1 = 100
+        self.lung_elasticity = 1.0
+        self.healthy_alveoli_ratio = 1.0
+        self.fibrosis_level = 0.0
+        self.tar_deposits = 0.0
+        self.pm25_concentration = 0.0
+        self.tumor_size = 0.0
+        self.bronchi_diameter = 1.0
+        self.lung_color = [1.0, 0.8, 0.8]
+        
         # Calculate progressive damage based on years
         # Short-term effects (1-3 years)
         if years <= 3:
