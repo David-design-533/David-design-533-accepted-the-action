@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lung-visualization"
+version = "1.0.0"
+description = "Interactive 3D lung visualization model showing smoking effects"
+readme = "lung_visualization/README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "David Design", email = "219483340+David-design-533@users.noreply.github.com"}
+]
+keywords = ["lung", "visualization", "smoking", "health", "education", "medical"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Healthcare Industry",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/David-design-533/David-design-533-accepted-the-action"
+Repository = "https://github.com/David-design-533/David-design-533-accepted-the-action"
+Issues = "https://github.com/David-design-533/David-design-533-accepted-the-action/issues"
+
+[project.scripts]
+lung-viz-serve = "lung_visualization.serve:main"
+lung-viz-demo = "example_demo:main"
+
+[tool.setuptools]
+packages = ["lung_visualization"]
+
+[tool.setuptools.package-data]
+lung_visualization = ["*.html", "*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

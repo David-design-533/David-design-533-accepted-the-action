@@ -1,0 +1,53 @@
+{
+  "name": "Lung Visualization Model Development",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.formatting.provider": "none",
+        "python.analysis.typeCheckingMode": "basic",
+        "files.exclude": {
+          "**/__pycache__": true,
+          "**/*.pyc": true,
+          "**/.pytest_cache": true
+        }
+      }
+    }
+  },
+
+  "forwardPorts": [8000, 8080],
+  "portsAttributes": {
+    "8000": {
+      "label": "Lung Visualization Web Server",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Alternative Web Server",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "postCreateCommand": "pip install -e . && echo 'Setup complete! Run: python3 lung_visualization/serve.py'",
+
+  "remoteUser": "vscode"
+}
